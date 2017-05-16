@@ -20,9 +20,9 @@ win32 {
 }
 
 macx {
-    DESTDIR = $${PROJECT_ROOT}/lib/plugins
+    DESTDIR = $${PROJECT_ROOT}/lib
 } else {
-    DESTDIR = $${PROJECT_ROOT}/lib/plugins/$${jtarget_url}
+    DESTDIR = $${PROJECT_ROOT}/lib/$${jtarget_url}
 }
 
 CONFIG += dll warn_on lib_bundle

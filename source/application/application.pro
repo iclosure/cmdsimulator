@@ -12,18 +12,15 @@ CONFIG += c++11
 
 PROJECT_ROOT = $$PWD/../..
 
+DEFINES += \
+    USE_JWIDGETS
+
 include($${PROJECT_ROOT}/source/common/config.pri)
 include($${PROJECT_ROOT}/source/common/build.pri)
 
 TEMPLATE = app
 TARGET = $$qtLibraryTarget(cmdsimulator)
 DESTDIR = $${PROJECT_ROOT}/bin
-
-DEFINES += \
-#    USE_JOFFICE \
-    USE_JWIDGETS \
-    USE_QWT \
-    USE_ENCRYPT
 
 ##########
 DEFINES += APP_LOG
@@ -36,88 +33,23 @@ DEFINES += APP_LOG
 INCLUDEPATH += $$PWD
 
 HEADERS += \
+    centralwidget.h \
+    customtype.h \
+    globalconfig.h \
+    mainwindow.h \
+    startpagemgr.h \
+    statusbarmgr.h
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    centralwidget.cpp \
+    globalconfig.cpp \
+    mainwindow.cpp \
+    startpagemgr.cpp \
+    statusbarmgr.cpp
 
 RESOURCES += \
     resource/application.qrc
-
-##################################################
-## import libraries
-##################################################
-
-# com.smartsoft.jsmartkits.joffice
-
-contains(DEFINES, USE_JMYOFFICE) {
-    win32:CONFIG(release, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice -lcom.smartsoft.jsmartkits.joffice
-    else:win32:CONFIG(debug, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice -lcom.smartsoft.jsmartkits.jofficed
-    else:macx: LIBS += -framework com.smartsoft.jsmartkits.joffice -F$${PROJECT_ROOT}/lib/
-    else:unix: LIBS += -L$${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice -lcom.smartsoft.jsmartkits.joffice
-
-    macx:{
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice.framework/Versions/Current/Headers
-        DEPENDPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice.framework/Versions/Current/Headers
-    } else {
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice/include
-        DEPENDPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice/include
-    }
-    DEFINES += JOFFICE_DLL
-}
-
-# com.smartsoft.jsmartkits.jwidgets
-
-contains(DEFINES, USE_JWIDGETS) {
-    win32:CONFIG(release, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets -lcom.smartsoft.jsmartkits.jwidgets
-    else:win32:CONFIG(debug, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets -lcom.smartsoft.jsmartkits.jwidgetsd
-    else:macx: LIBS += -framework com.smartsoft.jsmartkits.jwidgets -F$${PROJECT_ROOT}/lib/
-    else:unix: LIBS += -L$${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets -lcom.smartsoft.jsmartkits.jwidgets
-
-    macx:{
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets.framework/Versions/Current/Headers
-        DEPENDPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets.framework/Versions/Current/Headers
-    } else {
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets/include
-        DEPENDPATH += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets/include
-    }
-    DEFINES += JWIDGETS_DLL
-}
-
-# qwt
-
-contains(DEFINES, USE_QWT) {
-    win32:CONFIG(release, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/core/qwt -lqwt
-    else:win32:CONFIG(debug, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/core/qwt -lqwtd
-    else:macx: LIBS += -framework qwt -F$${PROJECT_ROOT}/lib/core/
-    else:unix: LIBS += -L$${PROJECT_ROOT}/lib/core/qwt -lqwt
-
-    macx:{
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/core/qwt.framework/Versions/Current/Headers
-        DEPENDPATH += $${PROJECT_ROOT}/lib/core/qwt.framework/Versions/Current/Headers
-    } else {
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/core/qwt/include
-        DEPENDPATH += $${PROJECT_ROOT}/lib/core/qwt/include
-    }
-    DEFINES += QWT_DLL
-}
-
-# jplugins.sql
-
-contains(DEFINES, USE_JSQL) {
-    win32:CONFIG(release, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/plugins/jplugins.sql -ljplugins.sql
-    else:win32:CONFIG(debug, debug|release): LIBS += -L$${PROJECT_ROOT}/lib/plugins/jplugins.sql -ljplugins.sqld
-    else:macx: LIBS += -framework jplugins.sql -F$${PROJECT_ROOT}/lib/plugins
-    else:unix: LIBS += -L$${PROJECT_ROOT}/lib/plugins/jplugins.sql -ljplugins.sql
-
-    macx:{
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/plugins/jplugins.sql.framework/Versions/Current/Headers
-        DEPENDPATH += $${PROJECT_ROOT}/lib/plugins/jplugins.sql.framework/Versions/Current/Headers
-    } else {
-        INCLUDEPATH += $${PROJECT_ROOT}/lib/plugins/jplugins.sql/include
-        DEPENDPATH += $${PROJECT_ROOT}/lib/plugins/jplugins.sql/include
-    }
-    DEFINES += JSQL_DLL
-}
 
 ## copy libraries
 
@@ -138,13 +70,11 @@ macx: {
     win32:destdir = $$replace(destdir, /, \\)
 
     # com.smartsoft.jsmartkits.joffice
-    srcfiles += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice/com.smartsoft.jsmartkits.joffice
+    srcfiles += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.joffice
     # com.smartsoft.jsmartkits.jwidgets
-    srcfiles += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets/com.smartsoft.jsmartkits.jwidgets
-    # qwt
-    srcfiles += $${PROJECT_ROOT}/lib/core/qwt/qwt
+    srcfiles += $${PROJECT_ROOT}/lib/com.smartsoft.jsmartkits.jwidgets
     # jplugins.sql
-    srcfiles += $${PROJECT_ROOT}/lib/plugins/jplugins.sql/jplugins.sql
+    srcfiles += $${PROJECT_ROOT}/lib/jplugins.sql/jplugins.sql
     ## copy files
     for (srcfile, srcfiles) {
         srcfile = $$srcfile$${lib_suffix}

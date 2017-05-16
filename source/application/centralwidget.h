@@ -4,9 +4,6 @@
 #include <QWidget>
 
 class QStackedWidget;
-class DataMgrWidget;
-class DataQueryWidget;
-class DataAnalyseWidget;
 
 class CentralWidget : public QWidget
 {
@@ -17,17 +14,11 @@ public:
     bool init();
 
 Q_SIGNALS:
-    void currentModelChanged(const QString &model);
 
 public Q_SLOTS:
-    void setCurrentModel(const QString &model);
-    void setCurrentIndex(const QString &model);
 
 private:
     QStackedWidget *q_stackedWidget;
-    DataMgrWidget *q_dataMgrWidget;
-    DataQueryWidget *q_dataQueryWidget;
-    DataAnalyseWidget *q_dataAnalyseWidget;
 };
 
 #endif // CENTRALWIDGET_H

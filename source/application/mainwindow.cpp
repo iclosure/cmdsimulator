@@ -3,9 +3,7 @@
 #include "centralwidget.h"
 #include "statusbarmgr.h"
 #include "jstylesheet.h"
-#include "jmyexcel.h"
 #include "globalconfig.h"
-#include "jbusyindicator.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,17 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
     // stylesheet
     setStyleSheet(JStyleSheet::styleSheet("mainwidget"));
 
-    connect(q_statusBarMgr, &StatusBarMgr::currentModelChanged,
-            q_centralWidget, &CentralWidget::setCurrentModel);
-    connect(q_statusBarMgr, &StatusBarMgr::currentIndexChanged,
-            q_centralWidget, &CentralWidget::setCurrentIndex);
-    connect(q_centralWidget, &CentralWidget::currentModelChanged,
-            q_statusBarMgr, &StatusBarMgr::setCurrentModel);
-
     //
     qApp->setProperty("mainWindow",
                       QVariant::fromValue<void *>(static_cast<QWidget *>(this)));
-    q_busyIndicator = new JBusyIndicator(false, this);
 }
 
 MainWindow::~MainWindow()
@@ -47,30 +37,11 @@ MainWindow::~MainWindow()
 
     //
     JLogManager::releaseInstance();
-
-    //
-    JFlyRecordGenerater::releaseInstance();
-
-    //
-    JRuleDict::releaseInstance();
-
-    //
-    JSqlTableMgr::releaseInstance();
-
-    //
-    JSqlTableMgr::releaseInstance();
-
-    //
-    JMyExcel::releaseInstance();
 }
 
 bool MainWindow::init()
 {
     bool result = true;
-
-    // 初始化航线数据（入库）
-    result = result && JMyExcel::instance()->saveBaseLineToSql(
-                GlobalConfig::instance()->baseLineFilePath());
 
     // 初始化核心模块
     result = result && q_centralWidget->init();
@@ -83,18 +54,12 @@ bool MainWindow::init()
 
 bool MainWindow::isBusyIndicatorVisible() const
 {
-    if (!q_busyIndicator) {
-        return false;
-    }
-    return q_busyIndicator->isVisible();
+    return false;
 }
 
 void MainWindow::setBusyIndicatorVisible(bool visible)
 {
-    if (q_busyIndicator) {
-        q_busyIndicator->setVisible(visible);
-    }
-    setEnabled(!visible);
+    Q_UNUSED(visible);
 }
 
 bool MainWindow::isMainWindowEnabled() const

@@ -5,7 +5,6 @@
 
 // - class StatusBarMgr -
 
-class ModelMgrWidget;
 class QLabel;
 class QProgressBar;
 
@@ -18,15 +17,11 @@ public:
     bool init();
 
 Q_SIGNALS:
-    void currentModelChanged(const QString &model);
-    void currentIndexChanged(const QString &model);
 
 public Q_SLOTS:
-    void setCurrentModel(const QString &model);
     void setMessage(const QString &text);
 
 private:
-    ModelMgrWidget *q_modelMgrWidget;
     QLabel *q_labelInfo;
     QProgressBar *q_progressBar;
 };

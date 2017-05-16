@@ -12,7 +12,7 @@ StartPageMgr::StartPageMgr(QWidget *parent) :
 
     QVBoxLayout *vertLayoutMain = new QVBoxLayout(this);
     vertLayoutMain->addStretch();
-
+/*
     // logo
     QLabel *labelLogo = new QLabel(this);
     labelLogo->setObjectName("labelLogo");
@@ -51,7 +51,7 @@ StartPageMgr::StartPageMgr(QWidget *parent) :
     QPushButton *buttonExit = new QPushButton(QStringLiteral("取消"), groupBoxLogin);
     horiLayoutButtons->addWidget(buttonLogin);
     horiLayoutButtons->addWidget(buttonExit);
-
+*/
     // progress
     QProgressBar *progressBar = new QProgressBar(this);
     progressBar->setObjectName("progressBar");
@@ -77,7 +77,7 @@ StartPageMgr::StartPageMgr(QWidget *parent) :
     //
     progressBar->hide();
     labelMsg->hide();
-
+/*
     //
     connect(comboBoxUserName, &QComboBox::currentTextChanged, this, [=](const QString &text){
         //
@@ -153,6 +153,7 @@ StartPageMgr::StartPageMgr(QWidget *parent) :
 
     //
     comboBoxUserName->setCurrentText(GlobalConfig::instance()->accountUserName());
+    */
 }
 
 bool StartPageMgr::start(QWidget *widget)
