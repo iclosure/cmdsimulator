@@ -1,32 +1,19 @@
-# Prerequisites
-*.d
+/bin
+/lib
+/source/temp
+/data/examples
+/setup/jdataanalyse/PROJECT_ASSISTANT
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Platform
+.DS_Store
 
-# Precompiled Headers
-*.gch
-*.pch
+Makefile
+*.autosave
+*.user*
+.vscode/.BROWSE.VC.DB
+data/data-1.db
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+setup/jdataanalyse/.DS_Store
+source/framework/.DS_Store
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+setup/jdataanalyse/pack/bin/setup.exe

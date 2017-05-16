@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <database type="QSQLITE"
+            connectionName="local-data-record"
+            databaseName="../data/data-1.db">
+    <account userName="test" password="test" />
+  </database>
+  <baseLine>
+    <path>../data/航线-1.xlsx</path>
+  </baseLine>
+  <system>
+    <theme>
+      <colorTheme style="dark" />
+    </theme>
+  </system>
+</config>

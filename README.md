@@ -1,2 +1,2 @@
-# cmdsimulator
-application based on Qt5.8.0
+# framework
+a platform framework project

@@ -1,0 +1,49 @@
+﻿
+#####################################################################
+#### Qt list
+
+Qt
+│  qt.conf
+|  icudt53.dll
+|  icuin53.dll
+|  icuuc53.dll
+│  Qt5Core.dll
+│  Qt5Gui.dll
+│  Qt5OpenGL.dll
+│  Qt5PrintSupport.dll
+|  Qt5Qml.dll
+│  Qt5Sql.dll
+│  Qt5Svg.dll
+│  Qt5Widgets.dll
+│  Qt5Xml.dll
+│  Qt5XmlPatterns.dll
+│
+└─plugins
+    ├─iconengines
+    │      qsvgicon.dll
+    │
+    ├─imageformats
+    │      qdds.dll
+    │      qgif.dll
+    │      qicns.dll
+    │      qico.dll
+    │      qjpeg.dll
+    │      qsvg.dll
+    │      qtga.dll
+    │      qtiff.dll
+    │      qwbmp.dll
+    │      qwebp.dll
+    │
+    ├─platforms
+    │      qminimal.dll
+    │      qoffscreen.dll
+    │      qwindows.dll
+    │
+    ├─printsupport
+    │      windowsprintersupport.dll
+    │
+    └─sqldrivers
+            qsqlite.dll
+            qsqlmysql.dll
+
+#####################################################################

@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/application/image">
+        <file alias="startpage.gif">image/startpage.gif</file>
+        <file alias="logo.png">image/logo.png</file>
+        <file alias="home-1.png">image/home-1.png</file>
+        <file alias="arrow-1.png">image/arrow-1.png</file>
+        <file alias="home-2.png">image/home-2.png</file>
+        <file alias="focus.png">image/focus.png</file>
+        <file alias="delete.png">image/delete.png</file>
+        <file alias="bk-license.bmp">image/bk-license.bmp</file>
+    </qresource>
+    <qresource prefix="/application/qss">
+        <file alias="stylesheet_application.qss">qss/stylesheet_application.qss</file>
+    </qresource>
+    <qresource prefix="/application/other">
+        <file alias="qt_zh_CN.qm">lang/qt_zh_CN.qm</file>
+    </qresource>
+    <qresource prefix="/application/qml">
+        <file alias="JBusyIndicator.qml">qml/JBusyIndicator.qml</file>
+    </qresource>
+</RCC>
