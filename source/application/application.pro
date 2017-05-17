@@ -51,6 +51,9 @@ SOURCES += \
 RESOURCES += \
     resource/application.qrc
 
+include($$PWD/utility/utility.pri)
+include($$PWD/mainpage/mainpage.pri)
+
 ## copy libraries
 
 copyCommand = @echo ---- module $${TARGET}: copy libraries ----

@@ -74,6 +74,9 @@ void MainWindow::setMainWindowEnabled(bool enabled)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
+    //TEST
+    QMainWindow::closeEvent(event);
+    return;
     int result = QMessageBox::warning(this, QStringLiteral("警告"),
                                       QStringLiteral("是否要关闭软件？点击【退出】即可"),
                                       QStringLiteral("退出"), QStringLiteral("取消"));

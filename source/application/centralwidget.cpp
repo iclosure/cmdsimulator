@@ -1,5 +1,6 @@
 ﻿#include "precomp.h"
 #include "centralwidget.h"
+#include "mainpage/mainpagewidget.h"
 
 CentralWidget::CentralWidget(QWidget *parent)
     : QWidget(parent)
@@ -7,14 +8,15 @@ CentralWidget::CentralWidget(QWidget *parent)
     QHBoxLayout *horiLayoutMain = new QHBoxLayout(this);
     horiLayoutMain->setContentsMargins(0, 0, 0, 0);
 
-    q_stackedWidget = new QStackedWidget(this);
-    horiLayoutMain->addWidget(q_stackedWidget);
+    d_stackedWidget = new QStackedWidget(this);
+    horiLayoutMain->addWidget(d_stackedWidget);
 
-    //q_stackedWidget->addWidget(q_dataMgrWidget);
-    //
+    d_mainPage = new MainPageWidget(this);
+
+    d_stackedWidget->addWidget(d_mainPage);
 
     //
-    q_stackedWidget->setCurrentIndex(0);
+    d_stackedWidget->setCurrentIndex(0);
 
     // initialize
 }
@@ -24,6 +26,12 @@ bool CentralWidget::init()
     bool result = true;
 
     //
+    result = result && d_mainPage->init();
 
     return result;
+}
+
+MainPageWidget *CentralWidget::mainPage() const
+{
+    return d_mainPage;
 }
