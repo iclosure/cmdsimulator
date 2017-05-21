@@ -115,18 +115,6 @@ void Class::releaseInstance() { \
 #include "jwidgets_inc.h"
 #endif
 
-#ifdef USE_JCURVE
-#include "jcurve_inc.h"
-#endif
-
-#ifdef USE_JFILEPARSE
-#include "jfileparse_inc.h"
-#endif
-
-#ifdef USE_JMYOFFICE
-#include "jmyoffice_inc.h"
-#endif
-
 #ifdef USE_JSQL
 #include "jsql_inc.h"
 #endif

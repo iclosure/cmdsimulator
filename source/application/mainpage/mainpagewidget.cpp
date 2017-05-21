@@ -7,10 +7,12 @@ MainPageWidget::MainPageWidget(QWidget *parent)
     : QWidget(parent)
 {
     QHBoxLayout *horiLayoutMain = new QHBoxLayout(this);
+    horiLayoutMain->setContentsMargins(0, 0, 0, 0);
+    horiLayoutMain->setSpacing(0);
 
     JSplitter *splitterMain = new JSplitter(this);
     splitterMain->setHandleWidth(6);
-    splitterMain->setScales(QList<double>() << 1 << 3);
+    splitterMain->setScales(QList<double>() << 1 << 2);
     splitterMain->setHandleColor(QColor(20, 20, 20, 20));
     horiLayoutMain->addWidget(splitterMain);
 

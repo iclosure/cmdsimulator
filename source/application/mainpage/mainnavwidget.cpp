@@ -8,6 +8,8 @@ MainNavWidget::MainNavWidget(QWidget *parent)
     : QWidget(parent)
 {
     QVBoxLayout *vertLayoutMain = new QVBoxLayout(this);
+    vertLayoutMain->setContentsMargins(0, 0, 0, 0);
+    vertLayoutMain->setSpacing(0);
 
     d_mainTab = new QTabWidget(this);
     vertLayoutMain->addWidget(d_mainTab);
